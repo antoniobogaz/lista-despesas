@@ -21,12 +21,7 @@ def save():
     texto = request.form['texto']      # <input name="texto"/>
     tarefa = { "texto": texto, "concluida": False }
     tarefas.append(tarefa)
-
-    return redirect('https://5000-brown-lemur-kiu2j61j.ws-us18.gitpod.io/')
+    return redirect('/')
     
 
 app.run(debug=True)
-
-
-# Implementar o DELETE!! (2,0 pontos)
-# Implementar uma pesquisa (3,0 pontos)
