@@ -29,4 +29,3 @@ app.run(debug=True)
 
 # Implementar o DELETE!! (2,0 pontos)
 # Implementar uma pesquisa (3,0 pontos)
-#teste
