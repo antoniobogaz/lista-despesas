@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA_Compatible" content="ie=edge">
     <title>Finance Agency - Suas Finanças Web</title>
 </head>
 <body>
     <div class="container">
 
-        <h1>Lista de Tarefas</h1>
+        <h1>Suas Despesas</h1>
 
-        <table class="table table-hover">
-
-            {% for tarefa in lista: %}
+        <table class="table table-dark table-striped">
+            
+            {% for despesas in lista: %}
             <tr>
-                <td>{{ tarefa['texto'] }}</td>
-                <td>{{ tarefa['concluida'] }} </td>
+                <td>{{ despesas['conta'] }}</td>
+                <td>{{ despesas['pagamento'] }}</td>
+                <td>{{ despesas['valor'] }}</td> deleta = request.form['deleta']
             </tr>
             {% endfor %}
 
         </table>
-
         <a href="/create" class="btn btn-primary">Adicionar</a>
+        
     </div>
+    <div class="container">
 
+        <form action="/deletar" method="POST">
+            <input type="text" class="form-control" name="deleta"/>
+            <button class="btn btn-primary">excluir</button>
+        </form>
+
+    </div>
 </body>
 </html>
