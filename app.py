@@ -38,11 +38,31 @@ def save():
 @app.route('/deletar', methods=['POST'])
 def deletar():
     deleta = request.form['deleta']
-    if deleta == " ":
+    if deleta == "":
         return render_template('erro.html')
     for despesa in lista_despesas:
         if despesa['conta'].lower() == deleta.lower():
             lista_despesas.remove(despesa)
     return redirect('/')
+
+#pesquisar
+@app.route('/buscar', methods=['POST'])
+def pesquisar():
+    lista_resultado = []
+    resultado = request.form['pesquisa']
+    resultado = resultado.lower()
+    if resultado == "":
+        return render_template('erro.html')
+    for indice in lista_despesas:
+        if resultado in indice['conta'].lower():
+            lista_resultado.append(indice)
+    for indice in lista_despesas:
+        if resultado in indice['pagamento'].lower():
+            lista_resultado.append(indice)
+    for indice in lista_despesas:
+        if resultado in indice['valor'].lower():
+            lista_resultado.append(indice)
+    return redirect('/')
+
 
 app.run(debug=True)
