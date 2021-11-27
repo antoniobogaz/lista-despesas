@@ -15,7 +15,7 @@
             <tr>
                 <td>{{ despesas['conta'] }}</td>
                 <td>{{ despesas['pagamento'] }}</td>
-                <td>{{ despesas['valor'] }}</td> deleta = request.form['deleta']
+                <td>{{ despesas['valor'] }}</td>
             </tr>
             {% endfor %}
 
@@ -31,5 +31,15 @@
         </form>
 
     </div>
+
+    <div class="container">
+
+        <form action="/buscar" method="POST">
+            <input type="text" class="form-control" name="pesquisa"/>
+            <button class="btn btn-primary">pesquisar</button>
+        </form>
+
+    </div>
+
 </body>
 </html>
