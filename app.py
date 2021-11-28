@@ -4,8 +4,6 @@ app = Flask(__name__)
 
 lista_despesas = [
     {"conta": "Agua", "pagamento": 'Pendente', "valor": '15400'},
-    {"conta": "luz", "pagamento": 'Pendente', "valor": '12000'},
-    {"conta": "Financiamento Carro", "pagamento": 'Pendente', "valor": '4500'},
 ]
 # pagina principal
 @app.route('/')
@@ -17,9 +15,6 @@ def index():
 def create():
     return render_template('create.html')
 
-@app.route('/teste')
-def teste():
-    return render_template('teste.html')
 
 
 # Save
