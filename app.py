@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 lista_despesas = [
-    {"conta": "Agua", "pagamento": 'Pendente', "valor": '15400'},
+    {"conta": "AGUA", "pagamento": 'PENDENTE', "valor": '15400'},
 ]
 # pagina principal
 @app.route('/')
@@ -22,12 +22,15 @@ def create():
 def save():
     texto = request.form['conta']  
     pagamentos = request.form['pagamento']
-    valores = request.form['valor'] # <input name="texto"/>
-    tarefa = { "conta": texto, "pagamento": pagamentos, "valor": valores }
-    lista_despesas.append(tarefa)
-    #lista_despesas.append(pagamentos)
-    #lista_despesas.append(valores)
-    return redirect('/')
+    valores = request.form['valor']# <input name="texto"/>
+    texto = texto.upper()
+    pagamentos = pagamentos.upper()
+    if texto == "" or pagamentos == "" or valores == "":
+        return render_template('erroCreate.html')
+    else:    
+        tarefa = { "conta": texto, "pagamento": pagamentos, "valor": valores }
+        lista_despesas.append(tarefa)
+        return redirect('/')
     
 #deletar
 @app.route('/deletar', methods=['POST'])
