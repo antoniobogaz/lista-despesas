@@ -14,19 +14,19 @@ lista_despesas = [
     {"conta": "EMPRÉSTIMO SANTANDER", "pagamento": 'PENDENTE', "valor": '980'},
     {"conta": "ROUPAS", "pagamento": 'PAGO', "valor": '150'},
 ]
-# pagina principal
+# pagina principal-------------------------------------------------------------
 @app.route('/')
 def index():
     return render_template('index.html', lista=lista_despesas)
 
-# Adicionar nova despesa
+# Adicionar nova despesa-------------------------------------------------------
 @app.route('/create')
 def create():
     return render_template('create.html')
 
 
 
-# Save
+# Save-------------------------------------------------------------------------
 @app.route('/save', methods=['POST'])  # <form action="/save" method="POST">
 def save():
     texto = request.form['conta']  
@@ -41,37 +41,40 @@ def save():
         lista_despesas.append(tarefa)
         return redirect('/')
     
-#deletar
+#deletar------------------------------------------------------------------------
 @app.route('/deletar', methods=['POST'])
 def deletar():
     deleta = request.form['deleta']
     deleta= deleta.upper()
     if deleta == "":
-        return render_template('erro.html')
+        return redirect('/')
     for despesa in lista_despesas:
         if despesa not in lista_despesas:
-             return render_template('/')
+            return redirect('/')
         if despesa['conta'].lower() == deleta.lower():
             lista_despesas.remove(despesa)
     return redirect('/')
 
-#pesquisar
-@app.route('/pesquisar', methods=['POST'])
+#pesquisar---------------------------------------------------------------------
+@app.route('/pesquisar', methods=['POST'])                                 
 def pesquisar():
     lista_resultado = []
     resultado = request.form['pesquisa']
-    resultado = resultado.lower()
+    resultado = resultado.upper()
     if resultado == "":
-        return render_template('erroSearch.html')
+        return redirect('/')
     for indice in lista_despesas:
-        if resultado in indice['conta'].lower():
+        if resultado in indice['conta'].upper():
             lista_resultado.append(indice)
+            return render_template('Search.html', resultado=lista_resultado)
     for indice in lista_despesas:
-        if resultado in indice['pagamento'].lower():
+        if resultado in indice['pagamento'].upper():
             lista_resultado.append(indice)
+            return render_template('Search.html', resultado=lista_resultado)
     for indice in lista_despesas:
-        if resultado in indice['valor'].lower():
+        if resultado in indice['valor'].upper():
             lista_resultado.append(indice)
+            return render_template('Search.html', resultado=lista_resultado)
     return redirect('/')
-
+#-----------------------------------------------------------------------------
 app.run(debug=True)
