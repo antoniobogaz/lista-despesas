@@ -61,8 +61,6 @@ def pesquisar():
     lista_resultado = []
     resultado = request.form['pesquisa']
     resultado = resultado.upper()
-    if resultado not in lista_despesas:
-        return render_template('erroSearch.html')
     if resultado == "":
         return redirect('/')
     for indice in lista_despesas:
