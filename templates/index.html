@@ -12,6 +12,12 @@
     body{
         background: #dcdcdc
     }
+    #cx1{
+        width:1415px;
+    }
+    #sd1{
+        width: 358px;
+    }
 </style>
 <body>
     
@@ -40,9 +46,9 @@
 
       </nav>
     <div>
-
+        <div id="sd1" style="text-align: right">
         <h1>Suas Despesas</h1>
-
+        </div>
         <table class= "table table-dark table-striped; container-xl">
                 <colgroup>
                   <col style="width:20%">
@@ -65,7 +71,7 @@
 
         </table>
     </div>
-    <div>
+    <div id="cx1" style="text-align: right">
 
         <form action="/deletar" method="POST">
             <input type="text" name="deleta"/>
