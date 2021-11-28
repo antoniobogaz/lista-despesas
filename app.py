@@ -25,8 +25,8 @@ def save():
     valores = request.form['valor'] # <input name="texto"/>
     tarefa = { "conta": texto, "pagamento": pagamentos, "valor": valores }
     lista_despesas.append(tarefa)
-    lista_despesas.append(pagamentos)
-    lista_despesas.append(valores)
+    #lista_despesas.append(pagamentos)
+    #lista_despesas.append(valores)
     return redirect('/')
     
 #deletar
