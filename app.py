@@ -47,7 +47,7 @@ def deletar():
     return redirect('/')
 
 #pesquisar
-@app.route('/buscar', methods=['POST'])
+@app.route('/pesquisar', methods=['POST'])
 def pesquisar():
     lista_resultado = []
     resultado = request.form['pesquisa']
