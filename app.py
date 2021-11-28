@@ -36,9 +36,12 @@ def save():
 @app.route('/deletar', methods=['POST'])
 def deletar():
     deleta = request.form['deleta']
+    deleta= deleta.upper()
     if deleta == "":
         return render_template('erro.html')
     for despesa in lista_despesas:
+        if despesa not in lista_despesas:
+             return render_template('/')
         if despesa['conta'].lower() == deleta.lower():
             lista_despesas.remove(despesa)
     return redirect('/')
