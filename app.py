@@ -65,5 +65,4 @@ def pesquisar():
             lista_resultado.append(indice)
     return redirect('/')
 
-
 app.run(debug=True)
