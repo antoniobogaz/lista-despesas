@@ -3,7 +3,16 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 lista_despesas = [
-    {"conta": "AGUA", "pagamento": 'PENDENTE', "valor": '15400'},
+    {"conta": "AGUA", "pagamento": 'PENDENTE', "valor": '250'},
+    {"conta": "ENERGIA", "pagamento": 'PENDENTE', "valor": '400'},
+    {"conta": "FINANCIAMENTO DO CARRO", "pagamento": 'PAGO', "valor": '2000'},
+    {"conta": "IPVA", "pagamento": 'PAGO', "valor": '550'},
+    {"conta": "LICENCIAMENTO MOTO", "pagamento": 'PAGO', "valor": '125'},
+    {"conta": "IPTU", "pagamento": 'PENDENTE', "valor": '650'},
+    {"conta": "ALIMENTAÇÃO", "pagamento": 'PAGO', "valor": '1100'},
+    {"conta": "CARTÃO DE CRÉDITO", "pagamento": 'PENDENTE', "valor": '642'},
+    {"conta": "EMPRÉSTIMO SANTANDER", "pagamento": 'PENDENTE', "valor": '980'},
+    {"conta": "ROUPAS", "pagamento": 'PAGO', "valor": '150'},
 ]
 # pagina principal
 @app.route('/')
