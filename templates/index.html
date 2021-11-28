@@ -36,9 +36,9 @@
                     <a class="nav-link active" aria-current="page" href="/create">Nova Despesa</a>
                   </li>
                 </ul>
-                <form class="d-flex" action="/save" method="POST">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <a href="/pesquisar" class="btn btn-outline-success" type="submit">pesquisar</a>
+                <form  action="/pesquisar" class="d-flex" method="POST">
+                  <input type="search" class="form-control me-2" placeholder="Search"  aria-label="Search" name="pesquisa">
+                  <button class="btn btn-outline-success" type="submit">pesquisar</button>
                 </form>
               </div>
             </div>
@@ -77,7 +77,5 @@
             <input type="text" name="deleta"/>
             <button class="btn btn-primary">excluir</button>
         </form>
-
     </div>
-
 </body>

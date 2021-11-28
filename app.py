@@ -62,7 +62,7 @@ def pesquisar():
     resultado = request.form['pesquisa']
     resultado = resultado.lower()
     if resultado == "":
-        return render_template('erro.html')
+        return render_template('erroSearch.html')
     for indice in lista_despesas:
         if resultado in indice['conta'].lower():
             lista_resultado.append(indice)
