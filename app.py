@@ -67,11 +67,9 @@ def pesquisar():
         if resultado in indice['conta'].upper(): # se o resultado estiver na lista_despesas
             lista_resultado.append(indice) # adiciona à lista vazia criada
             return render_template('Search.html', resultado=lista_resultado) # e retorna a informação para ser exibida no template "Search.html"
-    for indice in lista_despesas:
         if resultado in indice['pagamento'].upper():
             lista_resultado.append(indice)
             return render_template('Search.html', resultado=lista_resultado)
-    for indice in lista_despesas:
         if resultado in indice['valor'].upper():
             lista_resultado.append(indice)
             return render_template('Search.html', resultado=lista_resultado)        
