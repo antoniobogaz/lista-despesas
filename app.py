@@ -31,42 +31,42 @@ def create():
 def save():
     texto = request.form['conta']  
     pagamentos = request.form['pagamento']
-    valores = request.form['valor']# <input name="texto"/>
+    valores = request.form['valor']# <input name="texto"/> recebe os dados do template create.html
     texto = texto.upper()
-    pagamentos = pagamentos.upper()
-    if texto == "" or pagamentos == "" or valores == "":
-        return render_template('erroCreate.html')
-    else:    
-        tarefa = { "conta": texto, "pagamento": pagamentos, "valor": valores }
-        lista_despesas.append(tarefa)
-        return redirect('/')
+    pagamentos = pagamentos.upper() # transforma a string em maiúsculo
+    if texto == "" or pagamentos == "" or valores == "": # se algum campo do formulário estiver em branco...
+        return render_template('erroCreate.html') # ...retorna a página de erro "erroCreate.html"
+    else:
+        tarefa = { "conta": texto, "pagamento": pagamentos, "valor": valores } # senão, ele joga os valores para um dicionário
+        lista_despesas.append(tarefa) # e adiciona para a "lista_despesas"
+        return redirect('/') #redireciona para a pagina principal
     
 #deletar------------------------------------------------------------------------
 @app.route('/deletar', methods=['POST'])
 def deletar():
-    deleta = request.form['deleta']
-    deleta= deleta.upper()
-    if deleta == "":
-        return redirect('/')
+    deleta = request.form['deleta'] #recebe a informação vinda do template "index.html"
+    deleta= deleta.upper() # transforma a string em maiúsculo
+    if deleta == "": # se o usuário não digitar nada...
+        return redirect('/') #...ele da redirect para a página principal
     for despesa in lista_despesas:
-        if despesa not in lista_despesas:
-            return redirect('/')
-        if despesa['conta'].lower() == deleta.lower():
-            lista_despesas.remove(despesa)
-    return redirect('/')
+        if despesa not in lista_despesas: # se a despesa não estiver contida na lista principal...
+            return redirect('/') # ele também dará redirect para a página principal
+        if despesa['conta'].upper() == deleta.upper(): # se a conta na lista_despesa for igual ao que o usuário informou no campo de excluir...
+            lista_despesas.remove(despesa) #... ele remove
+    return redirect('/') # e redireciona à pagina principal
 
 #pesquisar---------------------------------------------------------------------
 @app.route('/pesquisar', methods=['POST'])                                 
 def pesquisar():
     lista_resultado = []
-    resultado = request.form['pesquisa']
-    resultado = resultado.upper()
-    if resultado == "":
-        return redirect('/')
+    resultado = request.form['pesquisa'] # recebe a informação venda do template "index.html"
+    resultado = resultado.upper() # tranforma a # string em maiúsculo
+    if resultado == "": # se o usuário não digitar nada e pesquisar
+        return redirect('/') # ele dará redirect para a página principal
     for indice in lista_despesas:
-        if resultado in indice['conta'].upper():
-            lista_resultado.append(indice)
-            return render_template('Search.html', resultado=lista_resultado)
+        if resultado in indice['conta'].upper(): # se o resultado estiver na lista_despesas
+            lista_resultado.append(indice) # adiciona à lista vazia criada
+            return render_template('Search.html', resultado=lista_resultado) # e retorna a informação para ser exibida no template "Search.html"
     for indice in lista_despesas:
         if resultado in indice['pagamento'].upper():
             lista_resultado.append(indice)
@@ -75,6 +75,6 @@ def pesquisar():
         if resultado in indice['valor'].upper():
             lista_resultado.append(indice)
             return render_template('Search.html', resultado=lista_resultado)        
-    return redirect('/')
+    return redirect('/') #retorna para a página principal
 #-----------------------------------------------------------------------------
 app.run(debug=True)
